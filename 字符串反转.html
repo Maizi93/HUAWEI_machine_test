@@ -1,0 +1,10 @@
+var readline = require('readline');
+var ri = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+ri.on('line',function(line){
+    var arr = line.split('').reverse();
+    console.log(arr.join('').toString());
+})

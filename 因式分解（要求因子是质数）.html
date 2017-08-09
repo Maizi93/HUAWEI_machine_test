@@ -1,0 +1,43 @@
+// 引入 readline 模块
+var readline = require('readline');
+// 创建 readline 接口实例
+var ri = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+
+
+
+// 其实这一题求的并不是什么质数因子，而是进行因式分解，要求每个因子都是质数
+ri.on('line',function(line){
+    var num = parseInt(line);
+    console.log(getPrimGens(num));
+    
+})
+
+
+// 短除法
+function getPrimGens(num){
+    var n = Math.floor(num / 2) + 1;
+    var arr = [];
+    var i;       // 全局变量
+    while(true){
+        if(i == n){
+            arr.push(num);
+            arr.push(' ');
+            break;
+        }
+        for(i = 2; i < n; i ++){
+            // 每次得到一个质数因数后，就退出循环，重新从2开始
+            if(num % i == 0){
+                arr.push(i);
+                arr.push(' ');
+                num = num / i;
+                n = Math.floor(num / 2) + 1;
+                break;
+            }
+        }
+    }
+    return arr.join('');
+}

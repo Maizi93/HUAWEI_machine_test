@@ -1,0 +1,23 @@
+// 引入 readline 模块
+var readline = require('readline');
+
+// 创建 readline 接口实例
+var ri = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+ri.on('line',function(line){
+    console.log(getLastLen(line));
+})
+
+
+// 获取字符串最后一个单词的长度
+function getLastLen(str){
+    var len = str.length;
+    if(len < 0 || len > 5000){
+        return false;
+    }
+    var words = str.split(" ");     // 把字符串分割成数组
+    return words[words.length-1].length;
+}

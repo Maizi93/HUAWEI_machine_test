@@ -1,0 +1,19 @@
+// 引入 readline 模块
+var readline = require('readline');
+// 创建 readline 接口
+var ri = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+ri.on('line',function(line){
+    var arr = line.split('').reverse();
+    var newArr = [];
+    arr.forEach(function(item){
+        var num = parseInt(item);
+        if(newArr.indexOf(num) == -1){
+            newArr.push(num);
+        }
+    })
+    console.log(parseInt(newArr.join('')));
+})

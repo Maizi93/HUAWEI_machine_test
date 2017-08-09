@@ -1,0 +1,38 @@
+// 引入 readline 模块
+var readline = require("readline");
+
+// 创建 readline 接口实例
+var ri = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+
+var arr = [];    // 创建一个数组用于存放读取的多行数据
+var len = 2;     // 数组的长度
+
+// 读取每行的数据
+ri.on('line', function(line){
+    arr.push(line);
+    if(len == arr.length){
+        console.log(getNum(arr));
+        arr.length = 0; // 把数组置空
+    }
+})
+
+
+
+// 获取字符串中指定字符的个数
+function getNum(arr){
+    var brr = arr[0].toLowerCase().split("");   // 获取整个字符串，并转换成小写，然后分割成数组
+    var ch = arr[1].toLowerCase();              // 获取字符，并转换成小写
+    var len = brr.length;
+    var N = 0;
+    for(var i = 0; i < len; i ++){
+        if(brr[i] == ch){
+            N ++;
+        }
+    }
+    return N;
+    
+}

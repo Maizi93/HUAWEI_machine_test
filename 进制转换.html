@@ -1,0 +1,14 @@
+// 引入 readline 模块
+var readline = require('readline');
+// 创建 readline 接口实例
+var ri = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+
+ri.on('line',function(line){
+    var num = parseInt(line);     // 将输入的十六进制的数值字符串转换成十进制的数
+    var str = num.toString(10);     // 将十进制的数转换成字符串（十进制）
+    console.log(str);
+});

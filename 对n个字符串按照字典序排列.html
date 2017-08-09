@@ -1,0 +1,29 @@
+var readline = require('readline');
+var ri = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+var lines = 0;
+var data = [];
+ri.on('line',function(line){
+    if(lines == 0){
+        lines = parseInt(line);
+        data = [];    // 对 data 数组进行初始化
+    }else{
+        data.push(line);
+        lines --;
+        // 一组数据获取完之后，进行具体的操作
+        if(!lines){
+            deal(data);
+        }
+    }
+})
+
+function deal(arr){
+    arr.sort();
+    
+    arr.forEach(function(item){
+        console.log(item);
+    })
+}

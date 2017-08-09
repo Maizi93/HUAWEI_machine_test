@@ -1,0 +1,39 @@
+// 引入 readline 模块
+var readline = require('readline');
+// 创建 readline 的接口实例
+var ri = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+var arr = [];
+
+ri.on('line',function(line){
+    arr.push(line);
+    if(arr.length == 2){
+        console.log(getResult(arr));
+        arr.length = 0;
+    }
+})
+
+
+// 结果：要把两次输入的字符串放入到一个数组
+function getResult(arr){
+    var a = splitStr(arr[0]);
+    var b = splitStr(arr[1]);
+    var str = a.concat(b).join('\n');
+    return str;
+}
+
+// 给字符串补零，并拆分
+function splitStr(str){
+    var arr = str.split('');
+    var newArr = [];
+    while(arr.length >= 8){
+        newArr.push(arr.splice(0,8).join(''));
+    }// 结果：要把两次输入的字符串放入到一个数组
+    if(arr.length > 0 && arr.length < 8){
+        newArr.push((arr.join('') + '00000000').slice(0,8));
+    }
+    return newArr;
+}
